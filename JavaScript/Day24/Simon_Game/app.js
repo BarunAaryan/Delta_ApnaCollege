@@ -56,7 +56,13 @@ function checkAns(idx){
         }
         console.log("Same Value");
     }else{
-        h2.innerText = `Game Over press any key to start`;
+        h2.innerHTML = `Game Over press! Your score was<b>${level}</b> <br> Press any key to start`;
+        document.querySelector="body".style.backgroundColor="red";
+        setTimeout(function(){
+            document.querySelector="body".style.backgroundColor="white";
+        }, 150);
+        
+        reset();
     }
 }
 
@@ -75,3 +81,10 @@ for( btn of allBtns){
     btn.addEventListener("click", btnPress);
 }
 
+function reset(){
+    started=false;
+    gameSeq= [];
+    userSeq=[];
+    level=0;
+}
+//make a highest score and tracker such that the highest score gets tracked and remains in the screen
