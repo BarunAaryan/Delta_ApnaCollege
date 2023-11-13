@@ -30,16 +30,16 @@
 //     }
 // );
 
-function savetoDb(data) {
-    return new Promise((resolve, reject) => {
-        let internetSpeed = Math.floor(Math.random() * 10) + 1;
-        if (internetSpeed > 4) {
-            resolve("Success: Data was saved");
-        } else {
-            reject("Failure: Weak Connection");
-        }
-    });
-}
+// function savetoDb(data) {
+//     return new Promise((resolve, reject) => {
+//         let internetSpeed = Math.floor(Math.random() * 10) + 1;
+//         if (internetSpeed > 4) {
+//             resolve("Success: Data was saved");
+//         } else {
+//             reject("Failure: Weak Connection");
+//         }
+//     });
+// }
 
 //Then and catch
 // let request= savetoDb("Apna College"); //req = promise object
@@ -53,22 +53,22 @@ function savetoDb(data) {
 //     console.log(request);
 // })
 
-savetoDb("Apna College")
-.then((result) => {
-    console.log(" DATA 1 saved Promise was Resolved");
-    console.log(result);
-    return savetoDb("Hello World")
-})
-.then((result) => {
-    console.log(" DATA 2 saved Promise was Resolved");
-    console.log("Result of promise",result);
-    return savetoDb("Barun ILY");
-})
-.then((result)=>{
-    console.log("Data 3 was saved");
-    console.log("Result of promise",result);
-})
-    .catch((error) => {
-        console.log("Promise was rejected")
-        console.log("Error of promise",error);
-    })
+// savetoDb("Apna College")
+// .then((result) => {
+//     console.log(" DATA 1 saved Promise was Resolved");
+//     console.log(result);
+//     return savetoDb("Hello World")
+// })
+// .then((result) => {
+//     console.log(" DATA 2 saved Promise was Resolved");
+//     console.log("Result of promise",result);
+//     return savetoDb("Barun ILY");
+// })
+// .then((result)=>{
+//     console.log("Data 3 was saved");
+//     console.log("Result of promise",result);
+// })
+//     .catch((error) => {
+//         console.log("Promise was rejected")
+//         console.log("Error of promise",error);
+//     })
