@@ -6,12 +6,16 @@
 // const someValue = require("./math");
 // console.log(someValue);
 
-const math = require("./math");
-console.log(math);
-console.log(math.sum(2,2));
-console.log(math.PI);
+// const math = require("./math");
+// console.log(math);
+// console.log(math.sum(2,2));
+// console.log(math.PI);
 
 //exports.sum= (a,b)=> a+b;
 //module.exports.sum= (a,b)=> a+b;
 
 //export =5 //this is wrong
+
+const info = require("./Fruits");
+console.log(info);
+console.log(info[0].name)
