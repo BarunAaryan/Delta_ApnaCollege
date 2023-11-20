@@ -16,6 +16,10 @@
 
 //export =5 //this is wrong
 
-const info = require("./Fruits");
-console.log(info);
-console.log(info[0].name)
+// const info = require("./Fruits");
+// console.log(info);
+// console.log(info[0].name)
+
+import {sum, PI} from "./math.js";
+console.log(sum(1,2));
+console.log(PI);
