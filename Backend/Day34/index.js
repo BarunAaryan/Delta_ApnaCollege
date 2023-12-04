@@ -24,14 +24,17 @@ app.post("/posts",(req, res)=>{
 
 let posts = [
     {
+        id: "1a ",
     username: "Barun",
     content: "Barun has no friends"
 },
     {
+        id: "2b",
     username: "Soumitri",
     content: "Does not like Barun"
 },
     {
+        id: "3c",
     username: "Trisha",
     content: "The Best person in the world."
 },
@@ -39,6 +42,10 @@ let posts = [
 ];
 app.get("/posts", (req, res)=>{
     res.render("index.ejs", {posts});
+})
+app.get("/posts/:id", (req, res)=>{
+    let {id}= req.params;
+    console.log(id);
 })
 
 app.listen(port, ()=>{
