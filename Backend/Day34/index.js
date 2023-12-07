@@ -19,13 +19,23 @@ app.get("/posts/new", (req, res) => {
 
 app.post("/posts", (req, res) => {
     // console.log(req.body);
-    let id= uuidv4();
+    let id = uuidv4();
     let { username, content } = req.body;
-    posts.push({id, username, content });
+    posts.push({ id, username, content });
 
     // res.send("post request working");
-    res.redirect("/posts");  
-})
+    res.redirect("/posts");
+});
+app.patch("/posts/:id", (req, res) => {
+    let { id } = req.params;
+    let newContent= req.body.content;
+    // console.log(newContent);
+    console.log(id);
+    let post = posts.find((p) => id === p.id);   
+    post.content= newContent;
+    console.log(post);
+res.send("Patch request working");
+});
 
 let posts = [
     {
@@ -54,7 +64,7 @@ app.get("/posts/:id", (req, res) => {
     let post = posts.find((p) => id === p.id);
     // console.log(post);
     // res.send("Request Working");
-    res.render("show.ejs", {post});
+    res.render("show.ejs", { post });
 })
 
 app.listen(port, () => {
