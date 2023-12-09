@@ -44,5 +44,10 @@ if(data){
 else{
     res.render("error.ejs"); 
 }
-
+});
+//DELETE
+app.delete("/posts/:id", (req, res)=>{
+    let {id} = req.params;
+    let post = posts.find((p)=> id ===p.id);
+    res.send("Delete sucessful");
 });
