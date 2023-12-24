@@ -8,10 +8,12 @@ const connection = mysql.createConnection({
   database: 'college1', //name of DB to be used
   password: '21Grind@'
 });
+let q = "SHOW TABLES" //writing the queries by defining a varibale.
 try{
-  connection.query("SHOW TABLES", (err, result)=>{
+  connection.query(q, (err, result)=>{
     if(err) throw err;
     console.log(result);
+    console.log(result.length); //as the output is an array we can get teh length
   })
 }catch(err){
   console.log(err);
