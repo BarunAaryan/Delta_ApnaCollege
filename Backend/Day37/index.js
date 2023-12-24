@@ -8,12 +8,14 @@ const connection = mysql.createConnection({
   database: 'college1', //name of DB to be used
   password: '21Grind@'
 });
-let q = "SHOW TABLES" //writing the queries by defining a varibale.
+//Inserting new data
+let q = "INSERT INTO user (id, username, email, password) VALUES ? "; //writing the queries by defining a varibale.
+let users =[["123b", "123_userb", "abcb@gmail.com", "abcb"], //users is arry of array
+            ["123c", "123_userc", "abcc@gmail.com", "abcc"]];
 try{
-  connection.query(q, (err, result)=>{
+  connection.query(q, [users], (err, result)=>{
     if(err) throw err;
-    console.log(result);
-    console.log(result.length); //as the output is an array we can get teh length
+    console.log(result);  
   })
 }catch(err){
   console.log(err);
