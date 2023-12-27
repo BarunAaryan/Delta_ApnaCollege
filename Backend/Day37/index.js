@@ -2,12 +2,15 @@ const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
 const express = require("express");
 const app= express();
+const path= require("path");
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
 
 // create the connection to database
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
+  user: 'root',   
   database: 'college1', //name of DB to be used
   password: '21Grind@'
 });
@@ -42,12 +45,12 @@ app.get("/", (req,res)=>{
   try{
   connection.query(q, (err, result)=>{
     if(err) throw err; 
-    console.log(result[0]["count(*)"]);  
-    res.send("success");
+    let count = result[0]["count(*)"];
+    res.render("home.ejs", {count});
   })
 }catch(err){
   console.log(err);
-  res.send("Some error in database")
+  res.send("Some error in database");
 } 
 });
 
