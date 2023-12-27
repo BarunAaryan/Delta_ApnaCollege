@@ -40,6 +40,7 @@ let getRandomUser= ()=>{
 // } 
 // connection.end(); //to end a connection
 
+//home route
 app.get("/", (req,res)=>{
   let q= `SELECT count(*) FROM user`;
   try{
@@ -47,6 +48,21 @@ app.get("/", (req,res)=>{
     if(err) throw err; 
     let count = result[0]["count(*)"];
     res.render("home.ejs", {count});
+  })
+}catch(err){
+  console.log(err);
+  res.send("Some error in database");
+} 
+});
+
+//Show Route
+app.get("/user", (req, res) => {
+let q = `SELECT * FROM user`;
+try{
+  connection.query(q, (err, users)=>{
+    if(err) throw err; 
+    //console.log(result);
+    res.render("showusers.ejs", {users});
   })
 }catch(err){
   console.log(err);
