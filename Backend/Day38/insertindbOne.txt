@@ -1,0 +1,38 @@
+insert in db Insert one
+test> use college
+switched to db college
+college> db.student.insertOne({name: "Barun", age: 21, marks: 88})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6591027de0e3afab76b1afa7')
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6591027de0e3afab76b1afa7'),
+    name: 'Barun',
+    age: 21,
+    marks: 88
+  }
+]
+college> db.student.insertOne({name: "Soumitri", city: "Berhampur", marks: 78})
+{
+  acknowledged: true,
+  insertedId: ObjectId('65910974e0e3afab76b1afa8')
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6591027de0e3afab76b1afa7'),
+    name: 'Barun',
+    age: 21,
+    marks: 88
+  },
+  {
+    _id: ObjectId('65910974e0e3afab76b1afa8'),
+    name: 'Soumitri',
+    city: 'Berhampur',
+    marks: 78
+  }
+]
+college>
