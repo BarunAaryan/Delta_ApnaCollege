@@ -1,0 +1,37 @@
+insert in db -> Insert Many
+college> db.student.insertMany([{name: "Sangeeta",marks: 96, city: "Berhampur" }, {name: "Barkha", marks: 76, city: "Berhmapur"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65913d3f068bf90db78b992a'),
+    '1': ObjectId('65913d3f068bf90db78b992b')
+  }
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6591027de0e3afab76b1afa7'),
+    name: 'Barun',
+    age: 21,
+    marks: 88
+  },
+  {
+    _id: ObjectId('65910974e0e3afab76b1afa8'),
+    name: 'Soumitri',
+    city: 'Berhampur',
+    marks: 78
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992a'),
+    name: 'Sangeeta',
+    marks: 96,
+    city: 'Berhampur'
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992b'),
+    name: 'Barkha',
+    marks: 76,
+    city: 'Berhmapur'
+  }
+]
+college>
