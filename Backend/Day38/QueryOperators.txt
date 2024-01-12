@@ -1,0 +1,85 @@
+college> db.student.find({marks: {$gt: 75}})
+[
+  {
+    _id: ObjectId('6591027de0e3afab76b1afa7'),
+    name: 'Barun',
+    age: 21,
+    marks: 88
+  },
+  {
+    _id: ObjectId('65910974e0e3afab76b1afa8'),
+    name: 'Soumitri',
+    city: 'Berhampur',
+    marks: 78
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992a'),
+    name: 'Sangeeta',
+    marks: 96,
+    city: 'Berhampur'
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992b'),
+    name: 'Barkha',
+    marks: 76,
+    city: 'Berhmapur'
+  }
+]
+college> db.student.find({marks: {$gte: 76}})
+[
+  {
+    _id: ObjectId('6591027de0e3afab76b1afa7'),
+    name: 'Barun',
+    age: 21,
+    marks: 88
+  },
+  {
+    _id: ObjectId('65910974e0e3afab76b1afa8'),
+    name: 'Soumitri',
+    city: 'Berhampur',
+    marks: 78
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992a'),
+    name: 'Sangeeta',
+    marks: 96,
+    city: 'Berhampur'
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992b'),
+    name: 'Barkha',
+    marks: 76,
+    city: 'Berhmapur'
+  }
+]
+college> db.student.find({city:{$in: ["Delhi", "Berhampur"]}})
+[
+  {
+    _id: ObjectId('65910974e0e3afab76b1afa8'),
+    name: 'Soumitri',
+    city: 'Berhampur',
+    marks: 78
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992a'),
+    name: 'Sangeeta',
+    marks: 96,
+    city: 'Berhampur'
+  }
+]
+college> db.student.find({$or: [{marks: {$gt: 90}}, {city: "Berhampur"}]})
+[
+  {
+    _id: ObjectId('65910974e0e3afab76b1afa8'),
+    name: 'Soumitri',
+    city: 'Berhampur',
+    marks: 78
+  },
+  {
+    _id: ObjectId('65913d3f068bf90db78b992a'),
+    name: 'Sangeeta',
+    marks: 96,
+    city: 'Berhampur'
+  }
+]
+college>
