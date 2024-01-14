@@ -11,3 +11,11 @@ main().then((res)=>{
 async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/test'); 
 }
+//schema
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    age: Number
+}); 
+//models
+const User = mongoose.model("User", userSchema);
