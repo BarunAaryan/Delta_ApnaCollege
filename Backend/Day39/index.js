@@ -42,11 +42,47 @@ const User = mongoose.model("User", userSchema);
 // });
 
 //insert Many
-User.insertMany([
-    {name: "Barkha", email: "barkha@gmail.com", age: 42},
-    {name: "Gudli", email: "gudli@gmail.com", age: 22},
-    {name: "Trisha", email: "trisha@gmail.com", age: 32},
+// User.insertMany([
+//     {name: "Barkha", email: "barkha@gmail.com", age: 42},
+//     {name: "Gudli", email: "gudli@gmail.com", age: 22},
+//     {name: "Trisha", email: "trisha@gmail.com", age: 32},
 
-]).then((res)=>{
-    console.log(res);
+// ]).then((res)=>{
+//     console.log(res);
+// });
+
+//Find in Mongoose 
+// User.findOne({age: {$gt: 30}})
+// .then((res)=>{
+// console.log(res);
+// })
+// .catch((err)=>{
+// console.log(err);
+// });
+
+// User.updateOne({age: {$gt:28}}, {age: 39})
+// .then((res)=>{
+// console.log(res);
+// })
+// .catch((err)=>{
+// console.log(err);
+// });
+
+// User.findOneAndUpdate({name: "Gudli"}, {age: 39}, {new: true})
+// .then((res)=>{
+// console.log(res);
+// })
+// .catch((err)=>{
+// console.log(err);
+// });
+
+//delete 
+User.findIdAndDelete("65a699413809d4a3731d5616")
+.then((res)=>{
+console.log(res);
+})
+.catch((err)=>{
+console.log(err);
 });
+
+
