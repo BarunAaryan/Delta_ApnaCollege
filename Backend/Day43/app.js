@@ -23,6 +23,19 @@ const app= express();
 //     next();
 // });
 
+//API token as query string
+app.use("/api", (req, res, next)=>{
+let {token}= req.query;
+if(token == "giveaccess"){
+    next();
+}
+res.send("Access Denied")
+});
+
+app.get("/api", (req, res)=>{
+    res.send("data");
+});
+
 //exploring app.use()
 app.use("/random",(req, res, next )=>{
     console.log("I am only for random");
