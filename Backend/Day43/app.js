@@ -23,14 +23,16 @@ const app= express();
 // });
 
 //API token as query string
-app.use("/api", (req, res, next)=>{
+
+const checkToken =  (req, res, next)=>{
 let {token}= req.query;
 if(token == "giveaccess"){
     next();
 }
-res.send("Access Denied")
-});
-app.get("/api", (req, res)=>{
+throw new Error("Access Denied")
+};
+//passing multiple middlewares
+app.get("/api", checkToken,(req, res)=>{
     res.send("data");
 });
 
