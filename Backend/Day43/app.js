@@ -14,7 +14,6 @@ const app= express();
 // next();
 // });
 
-
 //morgan - logger is popular
 //Creating a utility middleware
 // app.use((req, res, next)=>{
@@ -31,7 +30,6 @@ if(token == "giveaccess"){
 }
 res.send("Access Denied")
 });
-
 app.get("/api", (req, res)=>{
     res.send("data");
 });
