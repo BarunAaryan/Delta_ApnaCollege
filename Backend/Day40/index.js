@@ -75,32 +75,31 @@ app.use((err, req, res, next) => {
     res.status(status).send(message);
 });
 
-//new Show route-> part of day 44
-app.get("/chats/:id", async (req, res, next) => {
-    try {
+function asyncWrap(fn){
+    return function(req, res, next){
+        fn(req, res, next).catch(err=> next(err));
+    }; 
+}
+
+//new Show route-> part of day 44 -> putting the whole into asyncWrap
+app.get("/chats/:id", asyncWrap(async (req, res, next) => {
         let { id } = req.params;
         let chat = await Chat.findById(id);
         if (!chat) {
             next(new Expresserror(500, "Chat not found"));
-        } res.render("edit.ejs", { chat });
-    } catch (err) {
-        next(err);
-    }
-});
+        } 
+        res.render("edit.ejs", { chat });
+    
+}));
 
 //Update route
-app.put("/chats/:id", async (req, res) => {
-    try {
+app.put("/chats/:id", asyncWrap(async (req, res) => {
         let { id } = req.params;
         let { msg: newMsg } = req.body;
         let updatedChat = await Chat.findByIdAndUpdate(id, { msg: newMsg }, { runValidators: true, new: true });
         console.log(updatedChat);
         res.redirect("/chats");
-    }
-    catch (err) {
-        next(err);
-    }
-});
+}));
 
 //New Route
 app.get("/chats/new", (req, res) => {

@@ -22,7 +22,24 @@ const checkToken =  (req, res, next)=>{
 app.get("/", (req, res)=>{
     res.send("Hi I am groot");
 });
-app.get("/random", (req,res)=>{
+
+//Mongoose error
+const handleValidationErr = (err)=>{
+    console.log("This was a Validation Error. Pleasde follow the rules");
+    console.dir(err.message);
+    return err;
+}
+
+//Prints the name of the error
+app.use((err, req, res, next)=>{
+    console.log(err.name);
+    if(err.name== "ValidationError"){
+       err= handleValidation(err);
+    }
+    next(err);
+})
+
+app.get("/random", (req,res)=>{ 
     abcd= abced;
     });
     
