@@ -18,7 +18,7 @@ price: Number,
 });
 
 const customerSchema = new Schema({
-item: String,
+name: String,
 orders: [
     {
         type: Schema.Types.ObjectId,
@@ -27,14 +27,26 @@ orders: [
 ],
 });
 
+//we want -> when we are deleting the customer=> some work is done before that or after that
+// customerSchema.pre("findOneAndDelete", async()=>{
+//     console.log("PRE MIDDLEWARE");
+// });
+customerSchema.post("findOneAndDelete", async(customer)=>{
+    if(customer.orders.length){
+     let res = await Order.deleteMany({_id: {$in: customer.orders }});
+     console.log(res);
+    }
+   
+});
+
 const Order = mongoose.model("Order", orderSchema);
 const Customer = mongoose.model("Customer", customerSchema);
 
-const findCustomer = async()=>{
-    let result = await Customer.find({}).populate("orders");
-    console.log(result[0]);
-};
-findCustomer();
+// const findCustomer = async()=>{
+//     let result = await Customer.find({}).populate("orders");
+//     console.log(result[0]);
+// };
+// findCustomer();
 
 
 
@@ -64,3 +76,31 @@ findCustomer();
 // };
 
 // addOrders();
+
+
+//Day -47
+// const addCust = async ()=>{
+//     let newCust = new Customer({
+//         name: "Soumitri Sahu"
+//     });
+//     let newOrder= new Order({
+//         item: "Pizzza",
+//         price: 250,
+//     });
+
+//     newCust.orders.push(newOrder);
+//     await newOrder.save();
+//     await newCust.save();
+
+//     console.log("Added new Customer");
+
+// };
+// addCust();
+
+//Delete Customer
+const delCust = async ()=>{
+    let data = await Customer.findByIdAndDelete("65bc88338d55b3d47c79e770");
+    console.log(data)
+};
+
+delCust();
