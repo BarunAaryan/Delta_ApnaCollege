@@ -1,8 +1,7 @@
 const Listing = require("./models/listing");
-const { listingSchema } = require("../schema.js");
-const ExpressError = require("../utils/ExpressError.js");
-
-
+const Review = require("./models/review");
+const { listingSchema , reviewSchema} = require("./schema.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 module.exports.isLoggedIn= (req, res, next)=>{
     // console.log(req.user); //to check we are logged in or not
@@ -30,6 +29,16 @@ module.exports.isOwner= async (req, res, next)=>{
     }
     next();
 }
+//for reviews
+module.exports.isReviewAuthor= async (req, res, next)=>{
+    let {id,reviewId}= req.params;
+    let review = await Review.findById(reviewId);
+    if(!review.author.equals(res.locals.currUser._id)){
+        req.flash("error", "You did not create this review.");
+        return res.redirect(`/listings/${id}`);
+    }
+    next();
+}
 
 //Validate Listing-> Middleware
 module.exports.validateListing = (req, res, next) => {
@@ -41,3 +50,14 @@ module.exports.validateListing = (req, res, next) => {
         next();
     }
 };
+
+//validate reviews
+module.exports.validateReview = (req, res, next) => {
+    let { error } = reviewSchema.validate(req.body);
+    if (error) {
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    } else {
+        next();
+    }
+};  
