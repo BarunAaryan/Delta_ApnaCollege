@@ -104,3 +104,9 @@ font-weight : 400 !important;
     padding-right: 0;
 
 }
+
+/* Styling for map */
+#map { 
+    height: 400px;
+    width: 80vh;
+}
