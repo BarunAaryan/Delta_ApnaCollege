@@ -40,8 +40,6 @@ module.exports.createListing= async (req, res, next) => {
       })
         .send()
         // console.log(response.body.features[0].geometry);
-        res.redirect("/listings");
-
     // let listing = req.body.listing;
     let url = req.file.path;
     let filename = req.file.filename;
