@@ -106,6 +106,9 @@ app.use((req, res, next) => {
 //     //these are username and password
 //     res.send(registeredUser);
 // });
+app.get("/", (req,res)=>{
+    res.redirect("/listings");
+});
 
 app.use("/listings", listingRouter);
 //reviews
