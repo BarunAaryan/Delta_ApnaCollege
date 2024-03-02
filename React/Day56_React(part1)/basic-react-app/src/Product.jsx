@@ -1,16 +1,20 @@
-import "./Product.css"
+import "./Product.css";
+import Price from "./Price"; 
 
-function Product({title, price, features}){
-    // const list= features.map((feature)=> <li>{feature}</li>)
-// console.log(features);
-let isDiscount = price > 30000;
-let styles= {backgroundColor: isDiscount ? "yellow": ""};
+function Product({title, idx}){
+   let oldPrices=["12,495", "11,560", "799", "7000"];
+   let newPrices=["10,495", "9,560", "599", "4000"];
+   let description= [["8000 DPI", "5 Programmable Buttons"],
+    ["intutuve surface", "Robust Build quality"],
+    ["designed for iPad pro", "Robust build quality"], 
+     ["wireless", "strong"]];
     return (
-        <div className="Product" style={styles}>
-            <h3>{title}</h3>
-            <h5> Price: {price}</h5>
-            {price> 30000 ? <p>"5% Discount"</p> :<a href="/">Get Discount</a>}
+        <div className="Product">
+            <h4>{title}</h4>
+            <p>{description[idx][0]}</p>
+            <p>{description[idx][1]}</p>
+            <Price oldPrice={oldPrices[idx]} newPrice={newPrices[idx]}/>
         </div> 
     ); 
-}
+} 
 export default Product;

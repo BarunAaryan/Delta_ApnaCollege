@@ -11,8 +11,7 @@ function Description() {
 function App() {
   return (
     <>
-    <MsgBox userName= "Barun" textColor="yellow" />
-    <MsgBox userName= "ApnaCollege" textColor="blue" />
+    <h2>Blockbuster deals | Shop Now</h2>
     <ProductTab/>
     </>
   );
