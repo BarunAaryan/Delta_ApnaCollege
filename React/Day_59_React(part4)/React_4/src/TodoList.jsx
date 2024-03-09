@@ -28,7 +28,7 @@ export default function TodoList() {
             {todos.map((todo) => (
                 <li>{todo}</li>
             ))}
-               
+    
      </ul>
         </div>
     );
